@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="progress_style.css">
+</head>
+<body>
+    <div class="scrollIndicator">
+        <div class="text">
+            <div id="textvalue"></div>
+            <p>Page Scrolled</p>
+        </div>
+    </div>
+    
+    <script>
+        let indicator = document.querySelector(".scrollIndicator");
+        let textvalue = document.getElementById("textvalue");
+        let maxHeight = document.documentElement.scrollHeight
+        -window.innerHeight;
+
+        window.addEventListener('scroll', () =>{
+            let scrollRatio = window.scrollY / maxHeight;
+            let angle = scrollRatio * 362;
+            let percent = Math.round(scrollRatio * 100);
+           
+
+            indicator.style.background = `conic-gradient(from
+            0deg, #008eff 0%, #f00 ${angle}deg, #000 ${angle}deg)`;
+            textvalue.innerHTML = percent + "%"
+        })
+    </script>
+</body>
+</html>
